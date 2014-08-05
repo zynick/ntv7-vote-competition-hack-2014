@@ -1,0 +1,10 @@
+{
+  "name"         : "vote-ntv7",
+  "version"      : "0.0.1",
+  "description"  : "just for fun",
+  "main"         : "bot.js",
+  "dependencies" : {
+    "request"     : "2.39.0",
+    "underscore"  : "1.6.0"
+  }
+}
