@@ -12,16 +12,17 @@ function genIP() {
          (Math.random() * 255).toFixed(0);
 }
 
+//var number = process.argv[2];
 function exec(ip) {
-  console.log('exec(' + ip + ')');
+//  console.log('exec(' + ip + ')');
 
   var content = '<?xml version="1.0" encoding="utf-8"?>' +
                 '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
                 '  <soap:Body>' +
                 '    <Top5 xmlns="http://apps.ntv7.com.my/goldenawards/">' +
                 '      <cat>male</cat>' +
-                '      <con>M8</con>' +
-                '      <ip>' + ip + '</ip>' +
+                '      <con>really? nobody monitor a production system, really?</con>' +
+                '      <ip>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.' + ip + '</ip>' +
                 '    </Top5>' +
                 '  </soap:Body>' +
                 '</soap:Envelope>';
@@ -48,9 +49,14 @@ function exec(ip) {
     var len   = body.indexOf('</Top5Result>') - start;
     var count = body.substr(start, len);
 
-    console.log(count);
+//    console.log(number + '     ' + count);
 
-    exec(count === '0' ? genIP() : ip);
+    if (count === '0') {
+      console.log(new Date());
+      exec(genIP());
+    } else {
+      exec(ip);
+    }
   });
 }
 
